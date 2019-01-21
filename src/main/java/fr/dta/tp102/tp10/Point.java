@@ -2,8 +2,8 @@ package fr.dta.tp102.tp10;
 
 public class Point {
 
-	private final static int INITX = 0;
-	private final static int INITY = 0;
+	private static final int INITX = 0;
+	private static final int INITY = 0;
 	private int x;
 	private int y;
 	
@@ -17,11 +17,11 @@ public class Point {
 		y=INITY;
 	}
 	
-	public int getINIT_X() {
+	public int getINITX() {
 		return INITX;
 	}
 
-	public int getINIT_Y() {
+	public int getINITY() {
 		return INITY;
 	}
 
@@ -55,8 +55,6 @@ public class Point {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + INITX;
-		result = prime * result + INITY;
 		result = prime * result + x;
 		result = prime * result + y;
 		return result;
@@ -71,15 +69,16 @@ public class Point {
 		if (getClass() != obj.getClass())
 			return false;
 		Point other = (Point) obj;
-		if (INITX != other.getINIT_X())
+		if (INITX != other.getINITX())
 			return false;
-		if (INITY != other.getINIT_Y())
+		if (INITY != other.getINITY())
 			return false;
 		if (x != other.x)
 			return false;
 		if (y != other.y)
 			return false;
-		return true;
+		else
+			return true;
 	}
 	
 	
