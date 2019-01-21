@@ -2,7 +2,7 @@ package fr.dta.tp102.tutoJava8;
 
 public class Main {
 
-	final SamList list = SamPersonneDB.PERSONNE.getSubList((person) -> person.age >= 14 && person.age <= 25);
+	final SamList list = SamPersonneDB.PERSONNE.getSubList((person) -> person.getAge() >= 14 && person.getAge() <= 25);
  
 //    Assert.assertEquals(3, list.size());
 //    Assert.assertTrue(list.contains(new Person("Carson", "Busses", 25)));
