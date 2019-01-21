@@ -9,7 +9,7 @@ import fr.dta.tp102.tp30.*;
 
 public abstract class Figure implements Comparable<Figure> {
 
-	public static int cpt=0;
+	public static int cpt;
 	protected Couleur couleur;
 	
 	public void affiche() {
