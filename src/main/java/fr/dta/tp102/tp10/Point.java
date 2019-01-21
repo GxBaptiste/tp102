@@ -2,8 +2,8 @@ package fr.dta.tp102.tp10;
 
 public class Point {
 
-	private final int INIT_X = 0;
-	private final int INIT_Y = 0;
+	private final static int INITX = 0;
+	private final static int INITY = 0;
 	private int x;
 	private int y;
 	
@@ -13,16 +13,16 @@ public class Point {
 	}
 	
 	public Point() {
-		x=INIT_X;
-		y=INIT_Y;
+		x=INITX;
+		y=INITY;
 	}
 	
 	public int getINIT_X() {
-		return INIT_X;
+		return INITX;
 	}
 
 	public int getINIT_Y() {
-		return INIT_Y;
+		return INITY;
 	}
 
 	public int getX() {
@@ -43,8 +43,7 @@ public class Point {
 
 	
 	public String toString() {
-		String msg="["+this.x+","+this.y+"]";
-		return msg;
+		return "["+this.x+","+this.y+"]";
 	}
 	
 	
@@ -56,8 +55,8 @@ public class Point {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + INIT_X;
-		result = prime * result + INIT_Y;
+		result = prime * result + INITX;
+		result = prime * result + INITY;
 		result = prime * result + x;
 		result = prime * result + y;
 		return result;
@@ -72,9 +71,9 @@ public class Point {
 		if (getClass() != obj.getClass())
 			return false;
 		Point other = (Point) obj;
-		if (INIT_X != other.INIT_X)
+		if (INITX != other.getINIT_X())
 			return false;
-		if (INIT_Y != other.INIT_Y)
+		if (INITY != other.getINIT_Y())
 			return false;
 		if (x != other.x)
 			return false;
@@ -83,12 +82,5 @@ public class Point {
 		return true;
 	}
 	
-	
-/*	
- *  M�thode sans tous les cas possible
- * 
- * public boolean equals(Point p) {
-		return ((p.getX()==x) && (p.getY()==y));
-	} */
 	
 }
