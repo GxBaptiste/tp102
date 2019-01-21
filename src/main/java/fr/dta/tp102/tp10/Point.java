@@ -62,23 +62,23 @@ public class Point {
 
 	@Override
 	public boolean equals(Object obj) {
+		boolean res=true;
 		if (this == obj)
-			return true;
+			return res;
 		if (obj == null)
-			return false;
+			return !res;
 		if (getClass() != obj.getClass())
-			return false;
+			return !res;
 		Point other = (Point) obj;
 		if (INITX != other.getINITX())
-			return false;
+			return !res;
 		if (INITY != other.getINITY())
-			return false;
+			return !res;
 		if (x != other.x)
-			return false;
+			return !res;
 		if (y != other.y)
-			return false;
-		else
-			return true;
+			res=false;
+		return res;
 	}
 	
 	
