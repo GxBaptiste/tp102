@@ -19,7 +19,7 @@ public class Main {
 			Surfacable n = FigureUtil.getRandomSurfacable();
 			n.affiche();
 			Double res = n.surface();
-			logger.info("la surface est de : " + res);
+			logger.info("la surface est de : ",res);
 
 		}
 	}
