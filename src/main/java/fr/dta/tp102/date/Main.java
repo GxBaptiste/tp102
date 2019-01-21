@@ -21,10 +21,12 @@ public class Main {
 	public static void main(String[] args) {
 		DateFormat fullDateFormat = DateFormat.getDateTimeInstance(DateFormat.MEDIUM,DateFormat.MEDIUM);
 		Date date = new Date();
-		logger.info("D�but du programme : "+fullDateFormat.format(date));
+		String caMeSaoule = "D�but du programme : "+fullDateFormat.format(date);
+		logger.info(caMeSaoule);
 		logger.info("\n-------------------------------\n");
 		
 		
+
 		@SuppressWarnings("deprecation")
 		Date d = new Date(95,1,1);
 		String s = d.toString();
