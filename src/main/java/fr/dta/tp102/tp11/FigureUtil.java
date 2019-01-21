@@ -264,13 +264,11 @@ public class FigureUtil {
 //		fos = new File("C:\\Users\\formation\\Documents\\Java\\Dessin\\Dessin.txt");		
 //		fw = new FileWriter(fos);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(new File("Sauvegarde.txt")));
-		PrintWriter pw = new PrintWriter(writer);
-		try {
+		try(PrintWriter pw = new PrintWriter(writer)) {
 			pw.println(save);
 		}
 		finally {
 			writer.close();
-			pw.close();
 		}
 	}
 	
