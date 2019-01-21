@@ -20,17 +20,6 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 
-		/*
-		 * for(int i=0;i<10;i++) { Figure f = FigureUtil.getRandomFigure();
-		 * Collection<Point> l = f.getpoints();
-		 * logger.info("Figure n� "+(i+1)+" et de type : "+f.getType());
-		 * for(Point p : l) { logger.info(p); } }
-		 */
-//		Collection<Figure> cf = new ArrayList<Figure>();
-//		for(int i=0;i<5;i++) {
-//			cf.add(FigureUtil.getRandomFigure());
-//		}
-
 		Collection<Figure> f1 = FigureUtil.genere(10);
 		for (Figure f : f1) {
 			f.affiche();
@@ -109,16 +98,6 @@ public class Main {
 
 		logger.info("\n \n ");
 
-//		HashMap<String,Collection<Point>> map1 = FigureUtil.getRandomXX();
-//		logger.info(map1);
-//		logger.info("test d'un rect :"+FigureUtil.get(map1,"RECT"));
-//		logger.info("test d'un carre :"+FigureUtil.get(map1,"CARRE"));
-//		logger.info("test d'un rond :"+FigureUtil.get(map1,"ROND"));
-//		logger.info("test d'un segment :"+FigureUtil.get(map1,"SEGM"));
-//		
-//		logger.info("\n \n ");
-//		
-//		HashMap<String,Collection<Point>> hmp1 = FigureUtil.getRandomXX();
 
 		FigureUtil.clearMap();
 		FigureUtil.genere(50);
@@ -126,27 +105,13 @@ public class Main {
 
 		logger.info("------------ IMPRIME ------------");
 
-		// try {
 		try {
 			String save = FigureUtil.imprim();
 			FigureUtil.sauvegarde(save);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			logger.info("Erreur d'IOException");
 		}
-		/*
-		 * } catch (ImpressionHorsLimiteException e) {
-		 * logger.info("Hors Limite Exception : "+e.getMessage());
-		 * e.printStackTrace(); }
-		 */
 
-//		logger.info("------------ Equals avec une Couleur ------------");
-//		
-//		Figure f10 = new Carre(new Point(0,0),5,Couleur.BLEU);
-//		Figure f11 = new Carre(new Point(0,0),5,Couleur.BLEU);
-//		Figure f12 = new Carre(new Point(0,0),7,Couleur.BLEU);
-//		logger.info(f10.equals(f11));
-//		logger.info(f10.equals(f12));
 
 		String[][] tab = FigureUtil.charger();
 		for (int i = 0; i < 100; i++) {
@@ -159,7 +124,5 @@ public class Main {
 
 		}
 
-//		Segment s10 = new Segment(new Point(1,1),5,true);
-//		logger.info(s10.getForme());
 	}
 }
