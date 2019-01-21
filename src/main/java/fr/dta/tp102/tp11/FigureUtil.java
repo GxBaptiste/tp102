@@ -266,12 +266,7 @@ public class FigureUtil {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(new File("Sauvegarde.txt")));
 		PrintWriter pw = new PrintWriter(writer);
 		try {
-
 			pw.println(save);
-			pw.close();
-			writer.close();
-		} catch (IOException e) {
-			logger.info("context", e);
 		}
 		finally {
 			writer.close();
