@@ -94,28 +94,23 @@ public class Rectangle extends Figure implements Surfacable {
 		if (getClass() != obj.getClass())
 			return false;
 		Rectangle other = (Rectangle) obj;
-		if (p1 == null) {
-			if (other.p1 != null)
+		if (p1 == null || other.p1 != null) {
 				return false;
 		} else if (!p1.equals(other.p1))
 			return false;
-		if (p2 == null) {
-			if (other.p2 != null)
+		if (p2 == null || other.p2 != null) {
 				return false;
 		} else if (!p2.equals(other.p2))
 			return false;
-		if (p3 == null) {
-			if (other.p3 != null)
+		if (p3 == null || other.p3 != null) {
 				return false;
 		} else if (!p3.equals(other.p3))
 			return false;
-		if (p4 == null) {
-			if (other.p4 != null)
+		if (p4 == null || other.p4 != null) {
 				return false;
 		} else if (!p4.equals(other.p4))
 			return false;
-		if (couleur == null) {
-			if (other.couleur != null)
+		if (couleur == null || other.couleur != null) {
 				return false;
 		} else if (!couleur.equals(other.couleur))
 			return false;
