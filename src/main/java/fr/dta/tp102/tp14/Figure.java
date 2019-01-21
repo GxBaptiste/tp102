@@ -11,24 +11,26 @@ public abstract class Figure implements Comparable<Figure> {
 
 	public static int cpt;
 	protected Couleur couleur;
-	
+
 	public void affiche() {
-		System.out.println(toString()+" et de couleur : "+couleur.name());
+		System.out.println(toString() + " et de couleur : " + couleur.name());
 	}
 
 	public abstract String toString();
 
 	public String getType() {
-		cpt++;
-		return this.getClass()+" "+cpt;
+		if (cpt == 0) {
+			cpt = 1;
+		} else {
+			cpt++;
+		}
+		return this.getClass() + " " + cpt;
 
 	}
 
 	public abstract Collection<Point> getPoints();
 
 	public abstract boolean couvre(Point p);
-
-	
 
 	public double distanceOrigine() {
 		Point p = new Point();
@@ -40,27 +42,31 @@ public abstract class Figure implements Comparable<Figure> {
 		return l.stream().sorted().collect(Collectors.toList()).get(0);
 
 	}
+
 	public String getId() {
-		cpt++;
-		return this.getClass().getName()+" "+cpt;
+		if (cpt == 0) {
+			cpt = 1;
+		} else {
+			cpt++;
+		}
+		return this.getClass().getName() + " " + cpt;
 	}
-	
+
 	@Override
 	public int compareTo(Figure f) {
-		if(this.distanceOrigine() > f.distanceOrigine())
+		if (this.distanceOrigine() > f.distanceOrigine())
 			return 1;
 		else {
-			if(this.distanceOrigine() < f.distanceOrigine()) {
+			if (this.distanceOrigine() < f.distanceOrigine()) {
 				return -1;
-			}
-			else {
+			} else {
 				return 0;
 			}
 		}
 	}
-	
+
 	public Couleur getCouleur() {
-		return couleur;	
+		return couleur;
 	}
 
 	@Override
@@ -84,7 +90,7 @@ public abstract class Figure implements Comparable<Figure> {
 			return false;
 		return true;
 	}
-	
+
 	public abstract ArrayList<Point> getForme();
-	
+
 }

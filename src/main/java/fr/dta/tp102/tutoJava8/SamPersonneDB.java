@@ -2,10 +2,10 @@ package fr.dta.tp102.tutoJava8;
 
 public class SamPersonneDB {
  
-    public final static SamList PERSONNE;
+    public final static SamList PERSONNE = new SamList();
  
     static {
-    	PERSONNE = new SamList();
+    	//protected SamList PERSONNE = new SamList();
         PERSONNE.add(new Personne("Carson", "Busses", 25));
         PERSONNE.add(new Personne("Patty", "Cake", 72));
         PERSONNE.add(new Personne("Anne", "Derri ", 14));

@@ -3,6 +3,9 @@ package fr.dta.tp102.tp20;
 import java.io.IOException;
 import java.util.Collection;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import fr.dta.tp102.tp10.Point;
 import fr.dta.tp102.tp10.Rectangle;
 import fr.dta.tp102.tp10.Rond;
@@ -12,6 +15,8 @@ import fr.dta.tp102.tp14.Figure;
 import fr.dta.tp102.tp15.Segment;
 
 public class Main {
+	
+	private static final  Logger logger = LoggerFactory.getLogger(Main.class);
 
 	public static void main(String[] args) throws IOException {
 
@@ -127,7 +132,7 @@ public class Main {
 			FigureUtil.sauvegarde(save);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.info("Erreur d'IOException");
 		}
 		/*
 		 * } catch (ImpressionHorsLimiteException e) {
