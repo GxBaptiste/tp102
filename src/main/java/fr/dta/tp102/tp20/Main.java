@@ -24,8 +24,8 @@ public class Main {
 		for (Figure f : f1) {
 			f.affiche();
 		}
-
-		logger.info("\n \n ");
+		String rert = "\n \n";
+		logger.info(rert);
 
 		Point p = new Point(3, 5);
 		Point p2 = new Point(5, 7);
@@ -35,7 +35,6 @@ public class Main {
 		Carre c = new Carre(p, 2);
 		Carre c2 = new Carre(p, 2);
 		Carre c3 = new Carre(p2, 3);
-//		Carre c4 = new Carre(new Point(0, 0), 5);
 
 		Rond r = new Rond(new Point(2, 5), 2);
 		Rond r2 = new Rond(new Point(2, 5), 2);
@@ -58,9 +57,9 @@ public class Main {
 		d2.add(r4);
 		Dessin d3 = new Dessin();
 		d3.add(s1);
-		logger.info("TEST du getFIgureEn : " + FigureUtil.getFigureEn(p, d));
-		logger.info("TEST du getFIgureEn : " + FigureUtil.getFigureEn(p4, d2));
-		logger.info("TEST du getFIgureEn : " + FigureUtil.getFigureEn(p5, d3));
+		logger.info("TEST du getFIgure : " + FigureUtil.getFigureEn(p, d));
+		logger.info("TEST du getFig : " + FigureUtil.getFigureEn(p4, d2));
+		logger.info("TEST du getFIgEn : " + FigureUtil.getFigureEn(p5, d3));
 
 		logger.info("\n \n ");
 		logger.info("liste des true : ");
@@ -93,7 +92,8 @@ public class Main {
 		d10.add(c11);
 		d10.add(c12);
 		d10.add(c13);
-		logger.info("ekjekekeekeke" + FigureUtil.trieProcheOrigine(d10));
+		Collection<Figure> res = FigureUtil.trieProcheOrigine(d10);
+		logger.info("",res);
 		logger.info("",FigureUtil.trieSurface(d10));
 
 		logger.info("\n \n ");
@@ -117,7 +117,7 @@ public class Main {
 		for (int i = 0; i < 100; i++) {
 			for (int y = 0; y < 100; y++) {
 				if (y <= 98)
-					System.out.print(tab[i][y]);
+					logger.info("",tab[i][y]);
 				else
 					logger.info(tab[i][y]);
 			}
