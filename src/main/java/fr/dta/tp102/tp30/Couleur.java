@@ -21,7 +21,6 @@ public enum Couleur {
 
 	public static Couleur getRandomCouleur() {
 		int nb = ThreadLocalRandom.current().nextInt(Couleur.values().length);
-//		System.out.println(Couleur.values()[nb]);
 		return Couleur.values()[nb];
 	}
 }

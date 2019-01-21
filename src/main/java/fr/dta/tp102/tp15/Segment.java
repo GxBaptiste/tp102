@@ -1,6 +1,7 @@
 package fr.dta.tp102.tp15;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import fr.dta.tp102.tp10.Point;
 import fr.dta.tp102.tp14.Figure;
@@ -12,7 +13,7 @@ public class Segment extends Figure{
 	Point p2;
 	
 	public Segment(Point d,int lon, boolean horizon)  {
-		if(horizon==true) {
+		if(horizon) {
 			p1=d;
 			p2=new Point(d.getX()+lon,d.getY());
 		}
@@ -24,7 +25,7 @@ public class Segment extends Figure{
 	}
 	
 	public Segment(Point d,int lon, boolean horizon,Couleur c)  {
-		if(horizon==true) {
+		if(horizon) {
 			p1=d;
 			p2=new Point(d.getX()+lon,d.getY());
 		}
@@ -38,10 +39,7 @@ public class Segment extends Figure{
 	public String toString() {
 		return "["+getType()+" "+p1+" a "+p2+"]";
 	}
-	
-//	public String getType() {
-//		return "SEGM";
-//	}
+
 	public Collection<Point> getPoints() {
 		ArrayList<Point> l = new ArrayList<>();
 		l.add(p1);l.add(p2);
@@ -94,8 +92,8 @@ public class Segment extends Figure{
 		return true;
 	}
 	
-	public ArrayList<Point> getForme(){
-		ArrayList<Point> l = new ArrayList<>();
+	public List<Point> getForme(){
+		List<Point> l = new ArrayList<>();
 		if(p1.getX()<p2.getX()){
 			for(int i=p1.getX();i<=p2.getX();i++) {
 				l.add(new Point(i,p1.getY()));

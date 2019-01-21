@@ -1,6 +1,5 @@
 package fr.dta.tp102.tp12;
 import fr.dta.tp102.tp10.*;
-import fr.dta.tp102.tp20.ImpressionHorsLimiteException;
 
 public class Main {
 	

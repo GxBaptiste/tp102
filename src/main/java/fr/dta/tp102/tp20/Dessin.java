@@ -10,7 +10,7 @@ public class Dessin {
 	ArrayList<Figure> l;
 
 	public Dessin() {
-		l = new ArrayList<Figure>();
+		l = new ArrayList<>();
 	}
 
 	public boolean add(Figure f) {

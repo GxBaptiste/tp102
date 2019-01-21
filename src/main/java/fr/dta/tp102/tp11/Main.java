@@ -18,7 +18,8 @@ public class Main {
 			logger.info("\nRANDOM SURFACE : \n");
 			Surfacable n = FigureUtil.getRandomSurfacable();
 			n.affiche();
-			logger.info("la surface est de : " + n.surface());
+			Double res = n.surface();
+			logger.info("la surface est de : " + res);
 
 		}
 	}
