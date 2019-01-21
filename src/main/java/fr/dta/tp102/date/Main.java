@@ -17,8 +17,7 @@ import org.slf4j.LoggerFactory;
 public class Main {
 	
 	private static final  Logger logger = LoggerFactory.getLogger(Main.class);
-	
-	@SuppressWarnings("deprecation")
+
 	public static void main(String[] args) {
 		DateFormat fullDateFormat = DateFormat.getDateTimeInstance(DateFormat.MEDIUM,DateFormat.MEDIUM);
 		Date date = new Date();
@@ -26,6 +25,7 @@ public class Main {
 		logger.info("\n-------------------------------\n");
 		
 		
+		@SuppressWarnings("deprecation")
 		Date d = new Date(95,1,1);
 		String s = d.toString();
 		logger.info(s);
@@ -40,7 +40,8 @@ public class Main {
 		
 		logger.info("\n-------------------------------\n");
 	    LocalDateTime date3 = LocalDateTime.of(2019, Month.JANUARY, 25, 21, 0);
-	    logger.info("Date de noel : " + DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(date3));
+	    String dateTexte = "Date de noel : " + DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(date3);
+	    logger.info(dateTexte);
 	    
 	    Test t = new Test();
 	    t.essai();
