@@ -1,26 +1,28 @@
 package fr.dta.tp102.tp10;
+
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import fr.dta.tp102.tp14.*;
 import fr.dta.tp102.tp15.*;
 import fr.dta.tp102.tp30.Couleur;
 
-public class Rond extends Figure implements Surfacable{
-	
+public class Rond extends Figure implements Surfacable {
+
 	private Point point;
 	private int rayon;
-	
+
 	public Rond(Point p, int a) {
-		this.point=p;
-		this.rayon=a;
-		this.couleur=Couleur.getCouleurDefault();
+		this.point = p;
+		this.rayon = a;
+		this.couleur = Couleur.getCouleurDefault();
 	}
-	
-	public Rond(Point p, int a,Couleur c) {
-		this.point=p;
-		this.rayon=a;
-		this.couleur=c;
+
+	public Rond(Point p, int a, Couleur c) {
+		this.point = p;
+		this.rayon = a;
+		this.couleur = c;
 	}
 
 	public Point getPoint() {
@@ -38,21 +40,15 @@ public class Rond extends Figure implements Surfacable{
 	public void setRayon(int rayon) {
 		this.rayon = rayon;
 	}
-	
-//	public String getType() {
-//		return "ROND";
-//	}
-	
+
 	public String toString() {
-		String msg = "["+getType()+" ["+point.getX()+","+point.getY()+"]"+", "+rayon+"]";
-		return msg;
+		return "[" + getType() + " [" + point.getX() + "," + point.getY() + "]" + ", " + rayon + "]";
 	}
-	
-	public double surface(){
-		double res = Math.PI * (rayon*rayon);
-		return res;
+
+	public double surface() {
+		return Math.PI * (rayon * rayon);
 	}
-	
+
 	public Collection<Point> getPoints() {
 		ArrayList<Point> l = new ArrayList<>();
 		l.add(point);
@@ -84,8 +80,8 @@ public class Rond extends Figure implements Surfacable{
 			return false;
 		if (rayon != other.rayon)
 			return false;
-		if(couleur == null) {
-			if(other.couleur != null)
+		if (couleur == null) {
+			if (other.couleur != null)
 				return false;
 		} else if (!couleur.equals(other.couleur))
 			return false;
@@ -93,11 +89,12 @@ public class Rond extends Figure implements Surfacable{
 	}
 
 	public boolean couvre(Point p) {
-		return rayon>=Math.sqrt(Math.pow((p.getX()-point.getX()),2.0)+Math.pow((p.getY()-point.getY()),2.0));
+		return rayon >= Math.sqrt(Math.pow((p.getX() - point.getX()), 2.0) + Math.pow((p.getY() - point.getY()), 2.0));
 	}
-	
-	public ArrayList<Point> getForme(){
-		ArrayList<Point> l = new ArrayList<Point>();l.add(point);
+
+	public List<Point> getForme() {
+		List<Point> l = new ArrayList<>();
+		l.add(point);
 		return l;
 	}
 }

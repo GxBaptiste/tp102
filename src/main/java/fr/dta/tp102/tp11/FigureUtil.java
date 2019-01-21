@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
@@ -33,17 +34,14 @@ import fr.dta.tp102.tp30.Couleur;
 public class FigureUtil {
 	
 	
-	private static final  Logger logger = LoggerFactory.getLogger(FigureUtil.class);
+	public static final  Logger logger = LoggerFactory.getLogger(FigureUtil.class);
 
-	protected final static HashMap<String, Figure> map = new HashMap<>();
+	protected static final HashMap<String, Figure> map = new HashMap<>();
 	public static HashMap<String, Figure> getMap() {
 		return map;
 	}
 
-	private final static int RAND = 50;
-
-	public FigureUtil() {
-	}
+	private static final int RAND = 50;
 
 	public static Rond getRandomRond(Couleur c) {
 
@@ -130,16 +128,16 @@ public class FigureUtil {
 	}
 
 	public static Collection<Collection<Point>> getPoints(Figure... cf) {
-		Collection<Collection<Point>> lp = new ArrayList<Collection<Point>>();
+		Collection<Collection<Point>> lp = new ArrayList<>();
 		for (Figure f : cf) {
-			Collection<Point> aux = new ArrayList<Point>(f.getPoints());
+			Collection<Point> aux = new ArrayList<>(f.getPoints());
 			lp.add(aux);
 		}
 		return lp;
 	}
 
 	public static Collection<Figure> genere(int n) {
-		Collection<Figure> l = new ArrayList<Figure>();
+		Collection<Figure> l = new ArrayList<>();
 		for (int i = 0; i < n; i++) {
 			Figure f = getRandomFigure();
 			l.add(f);
@@ -163,8 +161,8 @@ public class FigureUtil {
 	}
 
 	public static Collection<Figure> trieProcheOrigine(Dessin d) {
-		ArrayList<Figure> l_figure = new ArrayList<>(d.getFigures());
-		return l_figure.stream().sorted().collect(Collectors.toList());
+		ArrayList<Figure> lFigure = new ArrayList<>(d.getFigures());
+		return lFigure.stream().sorted().collect(Collectors.toList());
 	}
 
 	public static Collection<Figure> trieSurface(Dessin d) {
@@ -180,7 +178,7 @@ public class FigureUtil {
 		}).collect(Collectors.toList());
 	}
 
-	public static Collection<Point> get(HashMap<String, Collection<Point>> hm, String id) {
+	public static Collection<Point> get(Map<String, Collection<Point>> hm, String id) {
 		return hm.get(id);
 	}
 
@@ -194,10 +192,10 @@ public class FigureUtil {
 		map.clear();
 	}
 
-	public static String imprim() throws IOException {
+	public static String imprim() {
 		StringBuilder str = new StringBuilder();
 		String[][] tab = new String[100][100];
-		String aux = "";
+		StringBuilder aux = new StringBuilder();
 
 		for (int i = 0; i < 100; i++) {
 			for (int y = 0; y < 100; y++) {
@@ -208,61 +206,36 @@ public class FigureUtil {
 			str.append(s.getKey() + " " + s.getValue() + "\r\n");
 		}
 		for (int i = 0; i < 100; i++) {
-			aux += "=";
+			aux.append("=");
 		}
 
 		str.append("Sauvegarde.txt\r\n");
 		str.append(aux + "\r\n");
-		aux = "";
+		aux = new StringBuilder();
 
-		for (String s : map.keySet()) {		
-//			Segment s10 = new Segment(new Point(20,15),10,true);
-//			Rectangle r10 = new Rectangle(new Point(50,50),20,25);
-//			for (Point p : s10.getForme()) {
-//				try {
-//					test(p);
-//					String aux2 = Character.toString(s10.getCouleur().getAbrege());
-//					tab[p.getX()][p.getY()] = aux2;
-//				} catch (ImpressionHorsLimiteException e) {
-//					
-//					System.out.println(e.getMessage());
-//				}
-//			}
-//			for (Point p : r10.getForme()) {
-//				try {
-//					test(p);
-//					String aux2 = Character.toString(r10.getCouleur().getAbrege());
-//					tab[p.getX()][p.getY()] = aux2;
-//				} catch (ImpressionHorsLimiteException e) {
-//					
-//					System.out.println(e.getMessage());
-//				}
-//			}
-			for (Point p : map.get(s).getForme()) {
+		for (Entry<String, Figure> s : map.entrySet()) {	
+			Figure fig = s.getValue();
+			for (Point p : fig.getForme()) {
 				try {
 					test(p);
-					String aux2 = Character.toString(map.get(s).getCouleur().getAbrege());
+					String aux2 = Character.toString(fig.getCouleur().getAbrege());
 					tab[p.getX()][p.getY()] = aux2;
 				} catch (ImpressionHorsLimiteException e) {
-					System.out.println(e.getMessage());
+					logger.info("",e.getMessage());
 				}
 			}
 		}
 		for (int i = 0; i < 100; i++) {
 			for (int y = 0; y < 100; y++) {
-				aux += tab[i][y];
+				aux.append(tab[i][y]);
 			}
 			str.append(aux + "\r\n");
-			aux = "";
+			aux = new StringBuilder();
 		}
 		return str.toString();
 	}
 
 	public static void sauvegarde(String save) throws IOException {
-//		File fos = null;
-//		FileWriter fw;
-//		fos = new File("C:\\Users\\formation\\Documents\\Java\\Dessin\\Dessin.txt");		
-//		fw = new FileWriter(fos);
 		BufferedWriter writer = new BufferedWriter(new FileWriter(new File("Sauvegarde.txt")));
 		try(PrintWriter pw = new PrintWriter(writer)) {
 			pw.println(save);
@@ -297,10 +270,9 @@ public class FigureUtil {
 					}
 				}
 			}
-			//System.out.println("SORTIR DE WHILE"); random modif pour git
 		}
 		catch(IOException ioe) {
-			System.out.println("Erreur --"+ ioe.toString());
+			logger.info("Erreur --"+ ioe.toString());
 		}
 		finally {
 			reader.close();

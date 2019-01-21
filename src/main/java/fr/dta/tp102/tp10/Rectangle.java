@@ -15,22 +15,18 @@ public class Rectangle extends Figure implements Surfacable {
 	private Point p4; // haut droite
 	private Point p3; // bas droite
 
-
-
 	public Rectangle(Point po, int la, int lo) {
-
-		setPoints(po,la,lo);
+		setPoints(po, la, lo);
 		couleur = Couleur.getCouleurDefault();
 
 	}
 
 	public Rectangle(Point po, int la, int lo, Couleur c) {
-
-		setPoints(po,la,lo);
+		setPoints(po, la, lo);
 		couleur = c;
 	}
-	
-	public void setPoints(Point po, int la,int lo) {
+
+	public void setPoints(Point po, int la, int lo) {
 		p3 = new Point(po.getX() + la, po.getY());
 		p2 = new Point(po.getX(), po.getY() + lo);
 		p1 = po;
@@ -57,8 +53,8 @@ public class Rectangle extends Figure implements Surfacable {
 	}
 
 	public String toString() {
-		return "[" + getType() + " " + p1.toString() + "," + p2.toString() + "," + p3.toString() + ","
-				+ p4.toString() + "]";
+		return "[" + getType() + " " + p1.toString() + "," + p2.toString() + "," + p3.toString() + "," + p4.toString()
+				+ "]";
 	}
 
 	public double surface() {
@@ -95,23 +91,23 @@ public class Rectangle extends Figure implements Surfacable {
 			return false;
 		Rectangle other = (Rectangle) obj;
 		if (p1 == null || other.p1 != null) {
-				return false;
+			return false;
 		} else if (!p1.equals(other.p1))
 			return false;
 		if (p2 == null || other.p2 != null) {
-				return false;
+			return false;
 		} else if (!p2.equals(other.p2))
 			return false;
 		if (p3 == null || other.p3 != null) {
-				return false;
+			return false;
 		} else if (!p3.equals(other.p3))
 			return false;
 		if (p4 == null || other.p4 != null) {
-				return false;
+			return false;
 		} else if (!p4.equals(other.p4))
 			return false;
 		if (couleur == null || other.couleur != null) {
-				return false;
+			return false;
 		} else if (!couleur.equals(other.couleur))
 			return false;
 		return true;
