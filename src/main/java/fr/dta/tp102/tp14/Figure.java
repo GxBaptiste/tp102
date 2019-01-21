@@ -23,7 +23,8 @@ public abstract class Figure implements Comparable<Figure> {
 
 	public void affiche() {
 		String coul = couleur.name();
-		logger.info(toString()," et de couleur : ",coul);
+		String fig = toString();
+		logger.info(fig," et de couleur : ",coul);
 	}
 
 	public abstract String toString();

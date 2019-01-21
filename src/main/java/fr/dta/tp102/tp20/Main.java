@@ -23,8 +23,8 @@ public class Main {
 		/*
 		 * for(int i=0;i<10;i++) { Figure f = FigureUtil.getRandomFigure();
 		 * Collection<Point> l = f.getpoints();
-		 * System.out.println("Figure n� "+(i+1)+" et de type : "+f.getType());
-		 * for(Point p : l) { System.out.println(p); } }
+		 * logger.info("Figure n� "+(i+1)+" et de type : "+f.getType());
+		 * for(Point p : l) { logger.info(p); } }
 		 */
 //		Collection<Figure> cf = new ArrayList<Figure>();
 //		for(int i=0;i<5;i++) {
@@ -36,7 +36,7 @@ public class Main {
 			f.affiche();
 		}
 
-		System.out.println("\n \n ");
+		logger.info("\n \n ");
 
 		Point p = new Point(3, 5);
 		Point p2 = new Point(5, 7);
@@ -69,32 +69,32 @@ public class Main {
 		d2.add(r4);
 		Dessin d3 = new Dessin();
 		d3.add(s1);
-		System.out.println("TEST du getFIgureEn : " + FigureUtil.getFigureEn(p, d));
-		System.out.println("TEST du getFIgureEn : " + FigureUtil.getFigureEn(p4, d2));
-		System.out.println("TEST du getFIgureEn : " + FigureUtil.getFigureEn(p5, d3));
+		logger.info("TEST du getFIgureEn : " + FigureUtil.getFigureEn(p, d));
+		logger.info("TEST du getFIgureEn : " + FigureUtil.getFigureEn(p4, d2));
+		logger.info("TEST du getFIgureEn : " + FigureUtil.getFigureEn(p5, d3));
 
-		System.out.println("\n \n ");
-		System.out.println("liste des true : ");
+		logger.info("\n \n ");
+		logger.info("liste des true : ");
 
-		System.out.println(c.equals(c2));
-		System.out.println(r.equals(r2));
-		System.out.println(rect.equals(rect2));
-		System.out.println(c3.equals(rect4));
+		logger.info("",c.equals(c2));
+		logger.info("",r.equals(r2));
+		logger.info("",rect.equals(rect2));
+		logger.info("",c3.equals(rect4));
 
-		System.out.println(" \n ");
-		System.out.println("liste des false : ");
-		System.out.println(c.equals(c3));
-		System.out.println(r.equals(r3));
-		System.out.println(rect.equals(rect3));
+		logger.info(" \n ");
+		logger.info("liste des false : ");
+		logger.info("",c.equals(c3));
+		logger.info("",r.equals(r3));
+		logger.info("",rect.equals(rect3));
 
-		System.out.println(" \n ");
-		System.out.println(p.distance(p2));
-		System.out.println(p.distance(p3));
+		logger.info(" \n ");
+		logger.info("",p.distance(p2));
+		logger.info("",p.distance(p3));
 
-		System.out.println("\n \n ");
-		System.out.println(rect3.distanceOrigine());
+		logger.info("\n \n ");
+		logger.info("",rect3.distanceOrigine());
 
-		System.out.println("\n \n ");
+		logger.info("\n \n ");
 		Carre c10 = new Carre(new Point(2, 2), 6);
 		Carre c11 = new Carre(new Point(5, 5), 3);
 		Rectangle c12 = new Rectangle(new Point(4, 4), 2, 5);
@@ -104,27 +104,27 @@ public class Main {
 		d10.add(c11);
 		d10.add(c12);
 		d10.add(c13);
-		System.out.println("ekjekekeekeke" + FigureUtil.trieProcheOrigine(d10));
-		System.out.println(FigureUtil.trieSurface(d10));
+		logger.info("ekjekekeekeke" + FigureUtil.trieProcheOrigine(d10));
+		logger.info("",FigureUtil.trieSurface(d10));
 
-		System.out.println("\n \n ");
+		logger.info("\n \n ");
 
 //		HashMap<String,Collection<Point>> map1 = FigureUtil.getRandomXX();
-//		System.out.println(map1);
-//		System.out.println("test d'un rect :"+FigureUtil.get(map1,"RECT"));
-//		System.out.println("test d'un carre :"+FigureUtil.get(map1,"CARRE"));
-//		System.out.println("test d'un rond :"+FigureUtil.get(map1,"ROND"));
-//		System.out.println("test d'un segment :"+FigureUtil.get(map1,"SEGM"));
+//		logger.info(map1);
+//		logger.info("test d'un rect :"+FigureUtil.get(map1,"RECT"));
+//		logger.info("test d'un carre :"+FigureUtil.get(map1,"CARRE"));
+//		logger.info("test d'un rond :"+FigureUtil.get(map1,"ROND"));
+//		logger.info("test d'un segment :"+FigureUtil.get(map1,"SEGM"));
 //		
-//		System.out.println("\n \n ");
+//		logger.info("\n \n ");
 //		
 //		HashMap<String,Collection<Point>> hmp1 = FigureUtil.getRandomXX();
 
 		FigureUtil.clearMap();
 		FigureUtil.genere(50);
-		System.out.println(FigureUtil.getMap());
+		logger.info("",FigureUtil.getMap());
 
-		System.out.println("------------ IMPRIME ------------");
+		logger.info("------------ IMPRIME ------------");
 
 		// try {
 		try {
@@ -136,17 +136,17 @@ public class Main {
 		}
 		/*
 		 * } catch (ImpressionHorsLimiteException e) {
-		 * System.out.println("Hors Limite Exception : "+e.getMessage());
+		 * logger.info("Hors Limite Exception : "+e.getMessage());
 		 * e.printStackTrace(); }
 		 */
 
-//		System.out.println("------------ Equals avec une Couleur ------------");
+//		logger.info("------------ Equals avec une Couleur ------------");
 //		
 //		Figure f10 = new Carre(new Point(0,0),5,Couleur.BLEU);
 //		Figure f11 = new Carre(new Point(0,0),5,Couleur.BLEU);
 //		Figure f12 = new Carre(new Point(0,0),7,Couleur.BLEU);
-//		System.out.println(f10.equals(f11));
-//		System.out.println(f10.equals(f12));
+//		logger.info(f10.equals(f11));
+//		logger.info(f10.equals(f12));
 
 		String[][] tab = FigureUtil.charger();
 		for (int i = 0; i < 100; i++) {
@@ -154,12 +154,12 @@ public class Main {
 				if (y <= 98)
 					System.out.print(tab[i][y]);
 				else
-					System.out.println(tab[i][y]);
+					logger.info(tab[i][y]);
 			}
 
 		}
 
 //		Segment s10 = new Segment(new Point(1,1),5,true);
-//		System.out.println(s10.getForme());
+//		logger.info(s10.getForme());
 	}
 }
