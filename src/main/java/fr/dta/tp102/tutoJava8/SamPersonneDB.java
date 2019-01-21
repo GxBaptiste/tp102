@@ -2,7 +2,7 @@ package fr.dta.tp102.tutoJava8;
 
 public class SamPersonneDB {
  
-    public final static SamList PERSONNE = new SamList();
+    protected final static SamList PERSONNE = new SamList();
  
     static {
     	//protected SamList PERSONNE = new SamList();
