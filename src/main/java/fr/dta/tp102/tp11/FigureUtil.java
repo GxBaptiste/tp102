@@ -32,16 +32,20 @@ import fr.dta.tp102.tp20.ImpressionHorsLimiteException;
 import fr.dta.tp102.tp30.Couleur;
 
 public class FigureUtil {
-	
-	
-	public static final  Logger logger = LoggerFactory.getLogger(FigureUtil.class);
+
+	public static final Logger logger = LoggerFactory.getLogger(FigureUtil.class);
 
 	protected static final HashMap<String, Figure> map = new HashMap<>();
-	public static HashMap<String, Figure> getMap() {
+
+	public static Map<String, Figure> getMap() {
 		return map;
 	}
 
 	private static final int RAND = 50;
+
+	private FigureUtil() {
+		throw new IllegalStateException("Utility class");
+	}
 
 	public static Rond getRandomRond(Couleur c) {
 
@@ -213,7 +217,7 @@ public class FigureUtil {
 		str.append(aux + "\r\n");
 		aux = new StringBuilder();
 
-		for (Entry<String, Figure> s : map.entrySet()) {	
+		for (Entry<String, Figure> s : map.entrySet()) {
 			Figure fig = s.getValue();
 			for (Point p : fig.getForme()) {
 				try {
@@ -221,7 +225,7 @@ public class FigureUtil {
 					String aux2 = Character.toString(fig.getCouleur().getAbrege());
 					tab[p.getX()][p.getY()] = aux2;
 				} catch (ImpressionHorsLimiteException e) {
-					logger.info("",e.getMessage());
+					logger.info("", e.getMessage());
 				}
 			}
 		}
@@ -237,44 +241,40 @@ public class FigureUtil {
 
 	public static void sauvegarde(String save) throws IOException {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(new File("Sauvegarde.txt")));
-		try(PrintWriter pw = new PrintWriter(writer)) {
+		try (PrintWriter pw = new PrintWriter(writer)) {
 			pw.println(save);
-		}
-		finally {
+		} finally {
 			writer.close();
 		}
 	}
-	
-	public static String[][] charger() throws IOException{
+
+	public static String[][] charger() throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader("Sauvegarde.txt"));
 		String[][] tab = new String[100][100];
 		try {
-			
+
 			String l;
-			int cpt=0;
+			int cpt = 0;
 			boolean au = false;
-			while((l = reader.readLine()) != null){
-			
-				if(au && l.length()!=0) {
-					for(int i=0;i<100;i++) {
-						tab[cpt][i]=Character.toString(l.charAt(i));
+			while ((l = reader.readLine()) != null) {
+
+				if (au && l.length() != 0) {
+					for (int i = 0; i < 100; i++) {
+						tab[cpt][i] = Character.toString(l.charAt(i));
 					}
-					
-					if(cpt!=99)
+
+					if (cpt != 99)
 						cpt++;
-				}
-				else {
-					if(l.length()!=0) {
-						if(l.charAt(0)=='=')
-							au=true;
+				} else {
+					if (l.length() != 0 || l.charAt(0) == '=') {
+
+						au = true;
 					}
 				}
 			}
-		}
-		catch(IOException ioe) {
-			logger.info("Erreur --"+ ioe.toString());
-		}
-		finally {
+		} catch (IOException ioe) {
+			logger.info("Erreur --" + ioe.toString());
+		} finally {
 			reader.close();
 		}
 		return tab;
