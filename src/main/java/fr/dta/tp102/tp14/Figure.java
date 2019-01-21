@@ -2,6 +2,7 @@ package fr.dta.tp102.tp14;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import fr.dta.tp102.tp10.Point;
@@ -95,6 +96,6 @@ public abstract class Figure implements Comparable<Figure> {
 		return true;
 	}
 
-	public abstract ArrayList<Point> getForme();
+	public abstract List<Point> getForme();
 
 }

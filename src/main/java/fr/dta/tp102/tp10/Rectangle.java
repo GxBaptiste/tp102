@@ -2,6 +2,7 @@ package fr.dta.tp102.tp10;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import fr.dta.tp102.tp14.Figure;
 import fr.dta.tp102.tp15.Surfacable;
@@ -14,28 +15,26 @@ public class Rectangle extends Figure implements Surfacable {
 	private Point p4; // haut droite
 	private Point p3; // bas droite
 
-	/*
-	 * private Point p; private int xlong; private int ylong;
-	 */
+
 
 	public Rectangle(Point po, int la, int lo) {
 
-		p3 = new Point(po.getX() + la, po.getY());
-		p2 = new Point(po.getX(), po.getY() + lo);
-		p1 = po;
-		p4 = new Point(po.getX() + la, po.getY() + lo);
+		setPoints(po,la,lo);
 		couleur = Couleur.getCouleurDefault();
 
 	}
 
 	public Rectangle(Point po, int la, int lo, Couleur c) {
 
+		setPoints(po,la,lo);
+		couleur = c;
+	}
+	
+	public void setPoints(Point po, int la,int lo) {
 		p3 = new Point(po.getX() + la, po.getY());
 		p2 = new Point(po.getX(), po.getY() + lo);
 		p1 = po;
 		p4 = new Point(po.getX() + la, po.getY() + lo);
-		couleur = c;
-
 	}
 
 	public Point getPointBasGauche() {
@@ -43,33 +42,27 @@ public class Rectangle extends Figure implements Surfacable {
 	}
 
 	public Point getPointBasDroit() {
-		// Point p = new Point(this.p.getX(),this.p.getY()+ylong);
+
 		return p2;
 	}
 
 	public Point getPointHautGauche() {
-		// Point p = new Point(this.p.getX()+xlong,this.p.getY());
+
 		return p3;
 	}
 
 	public Point getPointHautDroit() {
-		// Point p = new Point(this.p.getX()+xlong,this.p.getY()+ylong);
+
 		return p4;
 	}
 
-//	public String getType() {
-//		return "RECT";
-//	}
-
 	public String toString() {
-		String msg = "[" + getType() + " " + p1.toString() + "," + p2.toString() + "," + p3.toString() + ","
+		return "[" + getType() + " " + p1.toString() + "," + p2.toString() + "," + p3.toString() + ","
 				+ p4.toString() + "]";
-		return msg;
 	}
 
 	public double surface() {
-		double res = (p4.getX() - p1.getX()) * ((double) p4.getY() - (double) p1.getY());
-		return res;
+		return (p4.getX() - p1.getX()) * ((double) p4.getY() - (double) p1.getY());
 	}
 
 	public Collection<Point> getPoints() {
@@ -133,8 +126,8 @@ public class Rectangle extends Figure implements Surfacable {
 		return (p.getX() >= p1.getX() && p.getX() <= p2.getY()) && (p.getY() >= p1.getY() && p.getY() <= p4.getY());
 	}
 
-	public ArrayList<Point> getForme() {
-		ArrayList<Point> l = new ArrayList<>();
+	public List<Point> getForme() {
+		List<Point> l = new ArrayList<>();
 		for (int y = p1.getY(); y < p4.getY(); y++) {
 			for (int i = p1.getX(); i < p4.getX(); i++) {
 				l.add(new Point(i, y));
