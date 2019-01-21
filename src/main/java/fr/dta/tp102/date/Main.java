@@ -26,11 +26,6 @@ public class Main {
 		logger.info("\n-------------------------------\n");
 		
 		
-
-		@SuppressWarnings("deprecation")
-		Date d = new Date(95,1,1);
-		String s = d.toString();
-		logger.info(s);
 		DayOfWeek dow = DayOfWeek.MONDAY;
 		Locale loc = Locale.getDefault();
 		logger.info(dow.getDisplayName(TextStyle.FULL, loc));
