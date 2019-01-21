@@ -12,15 +12,7 @@ public class Carre extends Rectangle {
 		super(p,x,x);
 		couleur=c;
 	}
-	
-//	public String getType() {
-//		return "CARRE";
-//	}
 
-	
-//	public void affiche() {
-//		System.out.println(toString());
-//	}
 
 
 }

@@ -1,22 +1,24 @@
 package fr.dta.tp102.tp11;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import fr.dta.tp102.tp15.Surfacable;
-import fr.dta.tp102.tp20.ImpressionHorsLimiteException;
 
 public class Main {
 
-	public static void main(String[] args) throws ImpressionHorsLimiteException {
+	public static final Logger logger = LoggerFactory.getLogger(Main.class);
 
+	
+	public static void main(String[] args){
 
-		// FigureUtil.getRandomRond().affiche();
-		// FigureUtil.getRandomRectangle().affiche();
 		for (int i = 0; i < 10; i++) {
-			System.out.println("\nRANDOM FIGURE : \n");
+			logger.info("\nRANDOM FIGURE : \n");
 			FigureUtil.getRandomFigure().affiche();
-			System.out.println("\nRANDOM SURFACE : \n");
+			logger.info("\nRANDOM SURFACE : \n");
 			Surfacable n = FigureUtil.getRandomSurfacable();
 			n.affiche();
-			System.out.println("la surface est de : " + n.surface());
+			logger.info("la surface est de : " + n.surface());
 
 		}
 	}

@@ -4,7 +4,7 @@ import fr.dta.tp102.tp20.ImpressionHorsLimiteException;
 
 public class Main {
 	
-	public static void main(String[] args) throws ImpressionHorsLimiteException {
+	public static void main(String[] args) {
 	Point p = new Point(2,2);
 	Carre c = new Carre(p,5);
 	Rectangle r = new Rectangle(p,3,4);

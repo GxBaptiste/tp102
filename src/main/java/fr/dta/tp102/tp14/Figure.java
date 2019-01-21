@@ -5,11 +5,15 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import fr.dta.tp102.tp10.Point;
 import fr.dta.tp102.tp30.*;
 
 public abstract class Figure implements Comparable<Figure> {
 
+	public static final Logger logger = LoggerFactory.getLogger(Figure.class);
 	private static int cpt;
 	public static int getCpt() {
 		return cpt;
@@ -18,19 +22,23 @@ public abstract class Figure implements Comparable<Figure> {
 	protected Couleur couleur;
 
 	public void affiche() {
-		System.out.println(toString() + " et de couleur : " + couleur.name());
+		logger.info(toString() + " et de couleur : " + couleur.name());
 	}
 
 	public abstract String toString();
 
 	public String getType() {
-		if (cpt == 0) {
-			cpt = 1;
-		} else {
+		incr();
+		return this.getClass() + " " + cpt;
+	}
+	
+	public static void incr() {
+		if(cpt==0) {
+			cpt=1;
+		}
+		else {
 			cpt++;
 		}
-		return this.getClass() + " " + cpt;
-
 	}
 
 	public abstract Collection<Point> getPoints();
@@ -40,20 +48,16 @@ public abstract class Figure implements Comparable<Figure> {
 	public double distanceOrigine() {
 		Point p = new Point();
 		ArrayList<Double> l = new ArrayList<>();
-		ArrayList<Point> liste_points = (ArrayList<Point>) this.getPoints();
+		ArrayList<Point> listePoints = (ArrayList<Point>) this.getPoints();
 		for (int i = 0; i < this.getPoints().size(); i++) {
-			l.add(liste_points.get(i).distance(p));
+			l.add(listePoints.get(i).distance(p));
 		}
 		return l.stream().sorted().collect(Collectors.toList()).get(0);
 
 	}
 
 	public String getId() {
-		if (cpt == 0) {
-			cpt = 1;
-		} else {
-			cpt++;
-		}
+		incr();
 		return this.getClass().getName() + " " + cpt;
 	}
 
@@ -84,16 +88,17 @@ public abstract class Figure implements Comparable<Figure> {
 
 	@Override
 	public boolean equals(Object obj) {
+		boolean res = true;
 		if (this == obj)
-			return true;
+			return res;
 		if (obj == null)
-			return false;
+			return !res;
 		if (getClass() != obj.getClass())
-			return false;
+			return !res;
 		Figure other = (Figure) obj;
 		if (couleur != other.couleur)
-			return false;
-		return true;
+			res=false;
+		return res;
 	}
 
 	public abstract List<Point> getForme();
