@@ -263,10 +263,9 @@ public class FigureUtil {
 //		FileWriter fw;
 //		fos = new File("C:\\Users\\formation\\Documents\\Java\\Dessin\\Dessin.txt");		
 //		fw = new FileWriter(fos);
-		BufferedWriter writer = null;
+		BufferedWriter writer = new BufferedWriter(new FileWriter(new File("Sauvegarde.txt")));
+		PrintWriter pw = new PrintWriter(writer);
 		try {
-			writer = new BufferedWriter(new FileWriter(new File("Sauvegarde.txt")));
-			PrintWriter pw = new PrintWriter(writer);
 
 			pw.println(save);
 			pw.close();
@@ -276,14 +275,15 @@ public class FigureUtil {
 		}
 		finally {
 			writer.close();
+			pw.close();
 		}
 	}
 	
 	public static String[][] charger() throws IOException{
-		BufferedReader reader = null;
+		BufferedReader reader = new BufferedReader(new FileReader("Sauvegarde.txt"));
 		String[][] tab = new String[100][100];
 		try {
-			reader = new BufferedReader(new FileReader("Sauvegarde.txt"));
+			
 			String l;
 			int cpt=0;
 			boolean au = false;
