@@ -10,49 +10,54 @@ import java.time.format.TextStyle;
 import java.util.Date;
 import java.util.Locale;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 public class Main {
 	
+	private static final  Logger logger = LoggerFactory.getLogger(Main.class);
+	
+	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
 		DateFormat fullDateFormat = DateFormat.getDateTimeInstance(DateFormat.MEDIUM,DateFormat.MEDIUM);
 		Date date = new Date();
-		System.out.println("D�but du programme : "+fullDateFormat.format(date));
-		System.out.println("\n-------------------------------\n");
+		logger.info("D�but du programme : "+fullDateFormat.format(date));
+		logger.info("\n-------------------------------\n");
 		
 		
-		@SuppressWarnings("deprecation")
 		Date d = new Date(95,1,1);
-		System.out.println(d);
+		logger.info(d.toString());
 		DayOfWeek dow = DayOfWeek.MONDAY;
 		Locale loc = Locale.getDefault();
-		System.out.println(dow.getDisplayName(TextStyle.FULL, loc));
-		System.out.println(dow.getDisplayName(TextStyle.SHORT, loc));
-		System.out.println(dow.getDisplayName(TextStyle.NARROW, loc));
+		logger.info(dow.getDisplayName(TextStyle.FULL, loc));
+		logger.info(dow.getDisplayName(TextStyle.SHORT, loc));
+		logger.info(dow.getDisplayName(TextStyle.NARROW, loc));
 		
 		
 		
 		
-		System.out.println("\n-------------------------------\n");
+		logger.info("\n-------------------------------\n");
 	    LocalDateTime date3 = LocalDateTime.of(2019, Month.JANUARY, 25, 21, 0);
-	    System.out.println("Date de noel : " + DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(date3));
+	    logger.info("Date de noel : " + DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(date3));
 
 //	     Optional<String> empty = Optional.empty();
 //	     String test = "zefkzefkfeakfaekazfe";
 //	     assertFalse(empty.isPresent());
 //	     Optional.of(test);
 	    
-	    test t = new test();
-	    t.test();
+	    Test t = new Test();
+	    t.essai();
 	    int x2 = 1_000_2_3_5;			// ne fait rien
-	    System.out.println(x2);
+	    logger.info(Integer.toString(x2));
 	    StringBuilder s1 = new StringBuilder();
 	    s1.append("testNumero");
 	    s1.setCharAt(2, 'C');
 	    s1.setLength(3);
-	    System.out.println(s1);
+	    logger.info(s1.toString());
 	    int p = 010;  			// >Base 8
-	    System.out.println(p);
-	    System.out.println(0b101); // base 2
+	    logger.info(Integer.toString(p));
+	    logger.info(Integer.toString(0b101)); // base 2
 
 	}
 
