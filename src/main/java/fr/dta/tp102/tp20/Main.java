@@ -61,7 +61,7 @@ public class Main {
 		logger.info("TEST du getFig : " + FigureUtil.getFigureEn(p4, d2));
 		logger.info("TEST du getFIgEn : " + FigureUtil.getFigureEn(p5, d3));
 
-		logger.info("\n \n ");
+		logger.info(rert);
 		logger.info("liste des true : ");
 
 		logger.info("",c.equals(c2));
@@ -79,10 +79,10 @@ public class Main {
 		logger.info("",p.distance(p2));
 		logger.info("",p.distance(p3));
 
-		logger.info("\n \n ");
+		logger.info(rert);
 		logger.info("",rect3.distanceOrigine());
 
-		logger.info("\n \n ");
+		logger.info(rert);
 		Carre c10 = new Carre(new Point(2, 2), 6);
 		Carre c11 = new Carre(new Point(5, 5), 3);
 		Rectangle c12 = new Rectangle(new Point(4, 4), 2, 5);
